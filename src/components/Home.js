@@ -54,6 +54,7 @@ const SectionCard = styled.div`
   background-color: #fcead8; /* Same as the first card */
   border-radius: 10px;
   padding: 20px;
+  line-height: 25px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
   margin: 20px;
   max-width: 600px;
@@ -155,7 +156,7 @@ export default function Home() {
                         </p>
                     </SectionCard>
                     <SectionCard>
-                        <SectionTitle>Hot Pics 🔥</SectionTitle>
+                        <h2>🔥 Hot Pics 🔥</h2>
                         <ImagesContainer>
                             <p>Let's take a moment to admire their beauty..</p>
                             <ImageSet>
@@ -167,10 +168,11 @@ export default function Home() {
                                 <img alt="shiny pokemon" src={selectedPokemon.sprites.front_shiny} />
                                 <img alt="back shiny pokemon" src={selectedPokemon.sprites.back_shiny} />
                             </ImageSet>
+                            <p>Every pokemon you catch there is a very small chance they will be in it's shiny form.</p>
                         </ImagesContainer>
                     </SectionCard>
                     <SectionCard>
-                        <SectionTitle>Stats 💪</SectionTitle>
+                        <h2>💪 Stats 💪</h2>
                         <StatContainer>
                             {selectedPokemon.stats.map((stat) => (
                                 <StatItemContainer key={stat.stat.name}>
