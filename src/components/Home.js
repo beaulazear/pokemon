@@ -133,8 +133,8 @@ export default function Home() {
 
     return (
         <div id="homeDiv">
-            <Title>Pokemon Hoe</Title>
-            <h2>Pick-A-Poke ⬇️</h2>
+            <Title>Pokemon Guide</Title>
+            <h2>⬇️ Pick a Poke ⬇️</h2>
             <PokemonList>
                 {pokemon?.map((poke) => (
                     <PokemonNameButton
