@@ -6,7 +6,7 @@ function PokemonProvider({ children }) {
     const [pokemon, setPokemon] = useState(null)
 
     useEffect(() => {
-        fetch("https://pokeapi.co/api/v2/pokemon/").then((response) => {
+        fetch("https://pokeapi.co/api/v2/pokemon?limit=151/").then((response) => {
             if (response.ok) {
                 response.json().then((pokemon) => setPokemon(pokemon.results));
             }
