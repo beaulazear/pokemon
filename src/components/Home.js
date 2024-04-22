@@ -233,7 +233,14 @@ export default function Home() {
   const [paldea, setPaldea] = useState(false)
 
   const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scrolls smoothly to the top
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  
+    if (scrollTop > 0) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
   };
 
   const handleRegionChange = (event) => {
