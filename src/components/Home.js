@@ -4,12 +4,22 @@ import { PokemonContext } from "../context/pokemon";
 import pokeball from "./pokeball.png";
 
 const Title = styled.div`
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   font-weight: bold;
-  color: #333;
+  color: red; /* Fun orange color */
   text-align: center;
-  margin-top: 20px;
+  margin-top: 30px;
 `;
+
+const Subtitle = styled.div`
+  font-size: 1.6rem; /* Slightly smaller font size */
+  font-weight: normal; /* Normal weight for a sleeker look */
+  color: #555; /* Softer black color */
+  text-align: center;
+  margin-top: 16px; /* Slightly reduced top margin */
+  margin-bottom: 16px; /* Slightly reduced bottom margin */
+`;
+
 
 const PokemonNameButton = styled.div`
   font-size: 0.9rem;
@@ -182,6 +192,24 @@ const PokeballImage = styled.img`
   height: auto; /* Automatically adjust height to maintain aspect ratio */
 `;
 
+const Attribution = styled.p`
+  font-size: 0.9rem; /* Smaller font size for a softer look */
+  color: #888; /* Softer gray color */
+  text-align: center;
+  margin-top: 5px;
+  padding: 10px; /* Add padding for spacing */
+`;
+
+const Link = styled.a`
+  color: #6f7dff; /* Fun purple color for links */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s; /* Smooth color transition */
+  
+  &:hover {
+    color: #4b4bff; /* Darker purple color on hover */
+  }
+`;
+
 export default function Home() {
   const { pokemon } = useContext(PokemonContext);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
@@ -347,142 +375,145 @@ export default function Home() {
   return (
     <div id="homeDiv">
       <Title>{selectedRegion} Pokemon Guide</Title>
+      <Attribution>Data collected from <Link href="https://pokeapi.co/" target='_blank'>pokeapi.co</Link></Attribution>
       <ImageContainer>
         <PokeballImage src={pokeball} alt="Pokeball" />
       </ImageContainer>
-      <h2>Current region:</h2>
-      <StyledSelect value={selectedRegion} onChange={handleRegionChange}>
-        <StyledOption value="Kanto">Kanto</StyledOption>
-        <StyledOption value="Johto">Johto</StyledOption>
-        <StyledOption value="Hoenn">Hoenn</StyledOption>
-        <StyledOption value="Sinnoh">Sinnoh</StyledOption>
-        <StyledOption value="Unova">Unova</StyledOption>
-        <StyledOption value="Kalos">Kalos</StyledOption>
-        <StyledOption value="Alola">Alola</StyledOption>
-        <StyledOption value="Galar">Galar</StyledOption>
-        <StyledOption value="Paldea">Paldea</StyledOption>
-      </StyledSelect>
-      <h2>⬇️ Pick a Pokemon ⬇️</h2>
       {showButtons && (
-        <PokemonList>
-          {kanto === true && (
-            <>
-              {pokemon?.slice(1, 150).map((poke) => (
-                <PokemonNameButton
-                  key={poke.name}
-                  selected={poke.name === selectedPokemon?.name}
-                  onClick={() => handlePokemonClick(poke)}
-                >
-                  {poke.name}
-                </PokemonNameButton>
-              ))}
-            </>
-          )}
-          {johto === true && (
-            <>
-              {pokemon?.slice(151, 250).map((poke) => (
-                <PokemonNameButton
-                  key={poke.name}
-                  selected={poke.name === selectedPokemon?.name}
-                  onClick={() => handlePokemonClick(poke)}
-                >
-                  {poke.name}
-                </PokemonNameButton>
-              ))}
-            </>
-          )}
-          {hoenn === true && (
-            <>
-              {pokemon?.slice(251, 385).map((poke) => (
-                <PokemonNameButton
-                  key={poke.name}
-                  selected={poke.name === selectedPokemon?.name}
-                  onClick={() => handlePokemonClick(poke)}
-                >
-                  {poke.name}
-                </PokemonNameButton>
-              ))}
-            </>
-          )}
-          {sinnoh === true && (
-            <>
-              {pokemon?.slice(386, 492).map((poke) => (
-                <PokemonNameButton
-                  key={poke.name}
-                  selected={poke.name === selectedPokemon?.name}
-                  onClick={() => handlePokemonClick(poke)}
-                >
-                  {poke.name}
-                </PokemonNameButton>
-              ))}
-            </>
-          )}
-          {unova === true && (
-            <>
-              {pokemon?.slice(493, 648).map((poke) => (
-                <PokemonNameButton
-                  key={poke.name}
-                  selected={poke.name === selectedPokemon?.name}
-                  onClick={() => handlePokemonClick(poke)}
-                >
-                  {poke.name}
-                </PokemonNameButton>
-              ))}
-            </>
-          )}
-          {kalos === true && (
-            <>
-              {pokemon?.slice(649, 720).map((poke) => (
-                <PokemonNameButton
-                  key={poke.name}
-                  selected={poke.name === selectedPokemon?.name}
-                  onClick={() => handlePokemonClick(poke)}
-                >
-                  {poke.name}
-                </PokemonNameButton>
-              ))}
-            </>
-          )}
-          {alola === true && (
-            <>
-              {pokemon?.slice(721, 808).map((poke) => (
-                <PokemonNameButton
-                  key={poke.name}
-                  selected={poke.name === selectedPokemon?.name}
-                  onClick={() => handlePokemonClick(poke)}
-                >
-                  {poke.name}
-                </PokemonNameButton>
-              ))}
-            </>
-          )}
-          {galar === true && (
-            <>
-              {pokemon?.slice(809, 904).map((poke) => (
-                <PokemonNameButton
-                  key={poke.name}
-                  selected={poke.name === selectedPokemon?.name}
-                  onClick={() => handlePokemonClick(poke)}
-                >
-                  {poke.name}
-                </PokemonNameButton>
-              ))}
-            </>
-          )}
-          {paldea === true && (
-            <>
-              {pokemon?.slice(905, 1024).map((poke) => (
-                <PokemonNameButton
-                  key={poke.name}
-                  selected={poke.name === selectedPokemon?.name}
-                  onClick={() => handlePokemonClick(poke)}
-                >
-                  {poke.name}
-                </PokemonNameButton>
-              ))}
-            </>
-          )}
-        </PokemonList>
+        <>
+          <Subtitle>Region</Subtitle>
+          <StyledSelect value={selectedRegion} onChange={handleRegionChange}>
+            <StyledOption value="Kanto">Kanto</StyledOption>
+            <StyledOption value="Johto">Johto</StyledOption>
+            <StyledOption value="Hoenn">Hoenn</StyledOption>
+            <StyledOption value="Sinnoh">Sinnoh</StyledOption>
+            <StyledOption value="Unova">Unova</StyledOption>
+            <StyledOption value="Kalos">Kalos</StyledOption>
+            <StyledOption value="Alola">Alola</StyledOption>
+            <StyledOption value="Galar">Galar</StyledOption>
+            <StyledOption value="Paldea">Paldea</StyledOption>
+          </StyledSelect>
+          <Subtitle>⬇️ Pick a Pokemon ⬇️</Subtitle>
+          <PokemonList>
+            {kanto === true && (
+              <>
+                {pokemon?.slice(1, 150).map((poke) => (
+                  <PokemonNameButton
+                    key={poke.name}
+                    selected={poke.name === selectedPokemon?.name}
+                    onClick={() => handlePokemonClick(poke)}
+                  >
+                    {poke.name}
+                  </PokemonNameButton>
+                ))}
+              </>
+            )}
+            {johto === true && (
+              <>
+                {pokemon?.slice(151, 250).map((poke) => (
+                  <PokemonNameButton
+                    key={poke.name}
+                    selected={poke.name === selectedPokemon?.name}
+                    onClick={() => handlePokemonClick(poke)}
+                  >
+                    {poke.name}
+                  </PokemonNameButton>
+                ))}
+              </>
+            )}
+            {hoenn === true && (
+              <>
+                {pokemon?.slice(251, 385).map((poke) => (
+                  <PokemonNameButton
+                    key={poke.name}
+                    selected={poke.name === selectedPokemon?.name}
+                    onClick={() => handlePokemonClick(poke)}
+                  >
+                    {poke.name}
+                  </PokemonNameButton>
+                ))}
+              </>
+            )}
+            {sinnoh === true && (
+              <>
+                {pokemon?.slice(386, 492).map((poke) => (
+                  <PokemonNameButton
+                    key={poke.name}
+                    selected={poke.name === selectedPokemon?.name}
+                    onClick={() => handlePokemonClick(poke)}
+                  >
+                    {poke.name}
+                  </PokemonNameButton>
+                ))}
+              </>
+            )}
+            {unova === true && (
+              <>
+                {pokemon?.slice(493, 648).map((poke) => (
+                  <PokemonNameButton
+                    key={poke.name}
+                    selected={poke.name === selectedPokemon?.name}
+                    onClick={() => handlePokemonClick(poke)}
+                  >
+                    {poke.name}
+                  </PokemonNameButton>
+                ))}
+              </>
+            )}
+            {kalos === true && (
+              <>
+                {pokemon?.slice(649, 720).map((poke) => (
+                  <PokemonNameButton
+                    key={poke.name}
+                    selected={poke.name === selectedPokemon?.name}
+                    onClick={() => handlePokemonClick(poke)}
+                  >
+                    {poke.name}
+                  </PokemonNameButton>
+                ))}
+              </>
+            )}
+            {alola === true && (
+              <>
+                {pokemon?.slice(721, 808).map((poke) => (
+                  <PokemonNameButton
+                    key={poke.name}
+                    selected={poke.name === selectedPokemon?.name}
+                    onClick={() => handlePokemonClick(poke)}
+                  >
+                    {poke.name}
+                  </PokemonNameButton>
+                ))}
+              </>
+            )}
+            {galar === true && (
+              <>
+                {pokemon?.slice(809, 904).map((poke) => (
+                  <PokemonNameButton
+                    key={poke.name}
+                    selected={poke.name === selectedPokemon?.name}
+                    onClick={() => handlePokemonClick(poke)}
+                  >
+                    {poke.name}
+                  </PokemonNameButton>
+                ))}
+              </>
+            )}
+            {paldea === true && (
+              <>
+                {pokemon?.slice(905, 1024).map((poke) => (
+                  <PokemonNameButton
+                    key={poke.name}
+                    selected={poke.name === selectedPokemon?.name}
+                    onClick={() => handlePokemonClick(poke)}
+                  >
+                    {poke.name}
+                  </PokemonNameButton>
+                ))}
+              </>
+            )}
+          </PokemonList>
+        </>
       )}
       {selectedPokemon && (
         <div>
@@ -492,12 +523,12 @@ export default function Home() {
           <PokemonDetails>
             <CenteredSectionCards>
               <SectionCard>
-                <h2>
+                <Subtitle>
                   You have chosen{" "}
                   {selectedPokemon.name.charAt(0).toUpperCase() +
                     selectedPokemon.name.slice(1)}
                   !
-                </h2>
+                </Subtitle>
                 <p>
                   {selectedPokemon.name.charAt(0).toUpperCase() +
                     selectedPokemon.name.slice(1)}{" "}
@@ -513,38 +544,18 @@ export default function Home() {
                 </p>
               </SectionCard>
               <SectionCard>
-                <h2>🔥 Hot Pics 🔥</h2>
+                <Subtitle>📷 Pokemon Form 📷</Subtitle>
                 <ImagesContainer>
-                  <p>Let's take a moment to admire their beauty..</p>
-                  {!paldea && (
-                    <>
-                      <ImageSet>
-                        <img alt="front face of pokemon" src={selectedPokemon.sprites.front_default} />
-                        <img alt="back face of pokemon" src={selectedPokemon.sprites.back_default} />
-                      </ImageSet>
-                      <p>Aint she stunnin' ? Now look at her shine!</p>
-                      <ImageSet>
-                        <img alt="shiny pokemon" src={selectedPokemon.sprites.front_shiny} />
-                        <img alt="back shiny pokemon" src={selectedPokemon.sprites.back_shiny} />
-                      </ImageSet>
-                    </>
-                  )}
-                  {paldea && (
-                    <>
-                      <ImageSet>
-                        <img alt="front face of pokemon" src={selectedPokemon.sprites.front_default} />
-                      </ImageSet>
-                      <p>Aint she stunnin' ? Now look at her shine!</p>
-                      <ImageSet>
-                        <img alt="shiny pokemon" src={selectedPokemon.sprites.front_shiny} />
-                      </ImageSet>
-                    </>
-                  )}
+                  <p>Let's take a moment to admire their beauty. Here is {selectedPokemon.name.charAt(0).toUpperCase() + selectedPokemon.name.slice(1)}'s regular and shiny forms.</p>
+                  <ImageSet>
+                    <img alt="front face of pokemon" src={selectedPokemon.sprites.front_default} />
+                    <img alt="shiny pokemon" src={selectedPokemon.sprites.front_shiny} />
+                  </ImageSet>
                   <p>Every pokemon you catch there is a very small chance they will be in it's shiny form.</p>
                 </ImagesContainer>
               </SectionCard>
               <SectionCard>
-                <h2>💪 Stats 💪</h2>
+                <Subtitle>💪 Stats 💪</Subtitle>
                 <p>{selectedPokemon.name.charAt(0).toUpperCase() + selectedPokemon.name.slice(1)}'s base stats. These can be improved throughout gameplay!</p>
                 <StatContainer>
                   {selectedPokemon.stats.map((stat) => (
@@ -556,7 +567,7 @@ export default function Home() {
                 </StatContainer>
               </SectionCard>
               <SectionCard>
-                <h2>🤼 Combat Moves 🤼</h2>
+                <Subtitle>🤼 Combat Moves 🤼</Subtitle>
                 <p>Moves that can be learned by {selectedPokemon.name.charAt(0).toUpperCase() + selectedPokemon.name.slice(1)}</p>
                 <div>
                   <FilterButton
