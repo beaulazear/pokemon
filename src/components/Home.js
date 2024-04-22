@@ -4,12 +4,16 @@ import { PokemonContext } from "../context/pokemon";
 import pokeball from "./pokeball.png";
 
 const Title = styled.div`
-  font-size: 2.5rem;
+  font-size: 2.8rem; /* Slightly larger font size */
   font-weight: bold;
-  color: red; /* Fun orange color */
+  color: #333; /* Dark black color */
   text-align: center;
-  margin-top: 30px;
+  margin-top: 40px; /* Increased top margin for more spacing */
+  background: linear-gradient(to bottom, #333, #8b0000); /* Dark to red gradient */
+  -webkit-background-clip: text; /* Clip text to the gradient */
+  -webkit-text-fill-color: transparent; /* Fill text with gradient */
 `;
+
 
 const Subtitle = styled.div`
   font-size: 1.6rem; /* Slightly smaller font size */
@@ -540,7 +544,7 @@ export default function Home() {
                   {selectedPokemon.base_experience}. Their abilities are{" "}
                   {selectedPokemon.abilities
                     .map((ability) => ability.ability.name)
-                    .join(" / ")}
+                    .join(" / ")}.
                 </p>
               </SectionCard>
               <SectionCard>
